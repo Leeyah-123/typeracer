@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { RouterView } from "vue-router";
 import { useThemeStore } from "./stores/theme";
 
 const { changeTheme } = useThemeStore();
@@ -19,6 +20,7 @@ window.onload = () => {
 </script>
 
 <template>
+  <!-- theme switcher -->
   <button class="fixed px-3 py-1.5 rounded-lg m-3 text-white top-2 right-0"
     @click="isDarkMode = !isDarkMode, changeTheme()" :title="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
     <!-- light mode svg -->
@@ -42,16 +44,7 @@ window.onload = () => {
         class="fill-sky-500"></path>
     </svg>
   </button>
-  <div class="grid place-items-center text-center h-screen dark:text-slate-50 dark:bg-slate-800">
-    <header>
-      <h1 class="text-3xl mb-2">Welcome to TypeRacer</h1>
-      <h2>Increase your typing speed while racing against others!</h2>
-    </header>
-
-    <div class="flex flex-col content-center justify-items-center space-y-3">
-      <button class="btn">Join a Typing Race</button>
-      <span class="italic">or</span>
-      <button class="btn">Create Racetrack</button>
-    </div>
-  </div>
+  <main class="grid place-items-center text-center h-screen dark:text-slate-50 dark:bg-slate-800">
+    <RouterView />
+  </main>
 </template>
