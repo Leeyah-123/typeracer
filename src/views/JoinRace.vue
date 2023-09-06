@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import BackButton from "../components/buttons/BackButton.vue";
+const { push } = useRouter();
 
 const raceCode = ref("");
 const error = ref("");
 
 const joinRace = () => {
   if (!validateInput()) return;
-  error.value = "Race track does not exist"
+
+  // TODO:  1) Check if race track exists
+  //        2) Subscribe to race track
+  push(`/race/${raceCode.value}`);
 }
 
 const validateInput = () => {
@@ -16,6 +21,8 @@ const validateInput = () => {
   if (!raceCode.value) {
     error.value = "Please enter race code";
     return false;
+  } else if (raceCode.value.length < 6) {
+    error.value = "Invalid race code"
   }
 
   return true;
@@ -41,5 +48,3 @@ const validateInput = () => {
     <button class="btn" @click.prevent="joinRace">Join</button>
   </form>
 </template>
-
-<style scoped></style>

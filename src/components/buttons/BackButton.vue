@@ -15,5 +15,3 @@ defineProps<{
     </svg>
   </RouterLink>
 </template>
-
-<style scoped></style>

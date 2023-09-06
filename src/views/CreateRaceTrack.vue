@@ -37,5 +37,3 @@ const copyCodeToClipboard = () => {
     <button class="btn mt-2" @click.prevent="joinRace">Join</button>
   </div>
 </template>
-
-<style scoped></style>
