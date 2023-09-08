@@ -44,7 +44,8 @@ window.onload = () => {
         class="fill-sky-500"></path>
     </svg>
   </button>
-  <main class="grid place-items-center text-center h-screen dark:text-slate-50 dark:bg-slate-800">
+  <main
+    class="grid place-items-center text-center h-screen bg-slate-50 text-slate-900 dark:text-slate-50 dark:bg-slate-800">
     <RouterView />
   </main>
 </template>

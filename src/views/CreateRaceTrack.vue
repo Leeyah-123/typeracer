@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import BackButton from "../components/buttons/BackButton.vue";
 
 const code = ref("MJYUHW");
+const { push } = useRouter();
 
 const joinRace = () => {
-
+  const name: string = prompt("What's your name? (If name is not specified, default, Guest, will be used)") || "Guest"
+  console.log(name);
+  push(`/race/${code.value}`);
 }
 
 const copyCodeToClipboard = () => {
-  navigator.clipboard.writeText(code.value)
+  navigator.clipboard.writeText(code.value);
+  alert("Code copied to clipboard");
 }
 </script>
 

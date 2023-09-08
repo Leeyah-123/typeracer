@@ -12,6 +12,8 @@ const joinRace = () => {
 
   // TODO:  1) Check if race track exists
   //        2) Subscribe to race track
+  const name: string = prompt("What's your name? (If name is not specified, default, Guest, will be used)") || "Guest"
+  console.log(name);
   push(`/race/${raceCode.value}`);
 }
 
