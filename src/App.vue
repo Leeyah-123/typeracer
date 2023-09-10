@@ -45,7 +45,7 @@ window.onload = () => {
     </svg>
   </button>
   <main
-    class="grid place-items-center text-center h-screen bg-slate-50 text-slate-900 dark:text-slate-50 dark:bg-slate-800">
+    class="grid place-items-center text-center h-screen bg-slate-50 text-slate-900 transition duration-700 dark:text-slate-50 dark:bg-slate-800">
     <RouterView />
   </main>
 </template>

@@ -1,8 +1,20 @@
 <script setup lang="ts">
 import BackButton from '@/components/buttons/BackButton.vue';
+import { useSocket } from '@/stores/socket';
 import { faker } from '@faker-js/faker';
 
 const raceSentence = faker.hacker.phrase().concat('. ').concat(faker.hacker.phrase());
+
+import { onBeforeRouteLeave, useRoute } from 'vue-router';
+const { leaveRaceTrack } = useSocket();
+const route = useRoute();
+
+onBeforeRouteLeave((to, from, next) => {
+  console.log(route.params.code)
+  leaveRaceTrack(route.params.code.toString());
+  next();
+});
+
 </script>
 
 <template>
