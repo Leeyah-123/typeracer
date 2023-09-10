@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useSocket } from "@/stores/socket";
+import { nanoid } from "nanoid";
+import { Confirm } from "notiflix";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -14,12 +16,20 @@ const error = ref("");
 const joinRace = () => {
   if (!validateInput()) return;
 
-  // TODO:  1) Check if race track exists
-  //        2) Subscribe to race track
-  const name: string = prompt("What's your name? (If name is not specified, default, Guest, will be used)") || "Guest"
-  console.log(name);
-  joinRaceTrack(code.value);
-  push(`/race/${code.value}`);
+  let name: string = nanoid(10);
+
+  Confirm.prompt(
+    "What's your username",
+    'If no username is entered, a random username will be used',
+    name,
+    'Okay',
+    'Cancel',
+    (clientAnswer) => {
+      if (clientAnswer) name = clientAnswer;
+      if (!joinRaceTrack(code.value, name)) return;
+      push(`/race/${code.value}`);
+    },
+  );
 }
 
 const validateInput = () => {
